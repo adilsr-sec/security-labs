@@ -4,14 +4,14 @@
 
 ### *Aspiring SOC Analyst | Digital Forensics | Incident Response | Blue Team*
 
-[![CI Status](https://github.com/adilsr-sec/cybersecurity-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/adilsr-sec/cybersecurity-portfolio/actions)
+[![CI Status](https://github.com/adilsr-sec/security-labs/actions/workflows/ci.yml/badge.svg)](https://github.com/adilsr-sec/security-labs/actions)
 [![Security: Bandit](https://img.shields.io/badge/Security_Scan-Bandit-orange?style=flat-square&logo=python)](https://bandit.readthedocs.io/)
 [![TryHackMe](https://img.shields.io/badge/TryHackMe-Active-red?style=flat-square&logo=tryhackme)](https://tryhackme.com/p/adilsr-sec)
 [![HackTheBox](https://img.shields.io/badge/HackTheBox-Active-9fef00?style=flat-square&logo=hackthebox&logoColor=white)](https://app.hackthebox.com/profile/adilsr-sec)
 [![OffSec](https://img.shields.io/badge/OffSec-Learning_Path-blue?style=flat-square)](https://www.offsec.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
-[![Portfolio](https://img.shields.io/badge/Portfolio-Live-brightgreen?style=flat-square&logo=github)](https://adilsr-sec.github.io/cybersecurity-portfolio)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Live-brightgreen?style=flat-square&logo=github)](https://adilsr-sec.github.io/security-labs)
 
 </div>
 
@@ -273,7 +273,7 @@ This repository demonstrates security awareness at the code and process level:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/adilsr-sec/cybersecurity-portfolio.git
+git clone https://github.com/adilsr-sec/security-labs.git
 cd cybersecurity-portfolio
 
 # 2. Create and activate a virtual environment
@@ -314,7 +314,7 @@ python projects/secured-voting-blockchain/voting_cli.py
 | 💼 LinkedIn | [linkedin.com/in/adilsr33](https://linkedin.com/in/adilsr33) |
 | 🎯 TryHackMe | [tryhackme.com/p/adilsr-sec](https://tryhackme.com/p/adilsr-sec) |
 | 💻 HackTheBox | [app.hackthebox.com/profile/adilsr-sec](https://app.hackthebox.com/profile/adilsr-sec) |
-| 🌐 Portfolio | [adilsr-sec.github.io/cybersecurity-portfolio](https://adilsr-sec.github.io/cybersecurity-portfolio) |
+| 🌐 Portfolio | [adilsr-sec.github.io/security-labs](https://adilsr-sec.github.io/security-labs) |
 
 </div>
 

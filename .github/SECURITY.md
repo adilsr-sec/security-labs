@@ -20,7 +20,7 @@ If you discover a security vulnerability in this repository's code, please:
 
 1. **Do NOT** open a public GitHub Issue.
 2. Email the maintainer at: `adilsr33@gmail.com`
-3. Use the subject line: `[SECURITY] Vulnerability in cybersecurity-portfolio`
+3. Use the subject line: `[SECURITY] Vulnerability in security-labs`
 4. Include:
    - Description of the vulnerability
    - Steps to reproduce
