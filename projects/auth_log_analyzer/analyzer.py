@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Authentication Log Analyzer
-Author: entry-level cybersecurity engineer
+Author: Adil S R
 Description: Parses auth.log files to extract SSH successes, failures,
              and identify brute-force attacks from specific source IPs.
 """

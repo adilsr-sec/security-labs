@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cybersecurity Portfolio | SOC Analyst & Digital Forensics</title>
+  <meta name="description" content="Entry-level cybersecurity engineer portfolio showcasing SOC analysis, digital forensics, blockchain security, steganography, and threat intelligence projects." />
+  <meta name="keywords" content="cybersecurity, SOC analyst, digital forensics, incident response, blockchain, steganography, threat intelligence, MITRE ATT&CK" />
+  <meta property="og:title" content="Cybersecurity Portfolio | SOC & Forensics" />
+  <meta property="og:description" content="Showcasing security projects, tools, and skills for SOC Analyst and Forensics roles." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════ NAVIGATION -->
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__logo" id="nav-logo">
+        <span class="nav__logo-icon">🛡️</span>
+        <span>CyberPortfolio</span>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="#about" class="nav__link" id="nav-about">About</a></li>
+        <li><a href="#skills" class="nav__link" id="nav-skills">Skills</a></li>
+        <li><a href="#projects" class="nav__link" id="nav-projects">Projects</a></li>
+        <li><a href="#certifications" class="nav__link" id="nav-certs">Certs</a></li>
+        <li><a href="#contact" class="nav__link nav__link--cta" id="nav-contact">Contact</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════ HERO -->
+  <header class="hero" id="hero" role="banner">
+    <div class="hero__bg-grid" aria-hidden="true"></div>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <div class="hero__badge" id="hero-badge">
+        <span class="hero__badge-dot"></span>
+        Available for Opportunities
+      </div>
+
+      <h1 class="hero__title" id="hero-title">
+        <span class="hero__greeting">Hello, I'm</span>
+        <span class="hero__name">Adil S R</span>
+        <span class="hero__role typed-text" id="typed-text"></span>
+      </h1>
+
+      <p class="hero__description" id="hero-description">
+        Entry-level Cybersecurity Engineer with expertise in
+        <strong>SOC Operations</strong>, <strong>Digital Forensics</strong>,
+        <strong>Blockchain Security</strong>, and <strong>Threat Intelligence</strong>.
+        Passionate about defending systems and hunting threats.
+      </p>
+
+      <div class="hero__badges" id="hero-badges" aria-label="Platform badges">
+        <a href="https://tryhackme.com/p/adilsr-sec" target="_blank" rel="noopener" class="platform-badge platform-badge--thm" id="badge-thm">
+          🎯 TryHackMe
+        </a>
+        <a href="https://app.hackthebox.com/profile/adilsr-sec" target="_blank" rel="noopener" class="platform-badge platform-badge--htb" id="badge-htb">
+          💻 HackTheBox
+        </a>
+        <a href="https://offsec.com" target="_blank" rel="noopener" class="platform-badge platform-badge--offsec" id="badge-offsec">
+          🔐 OffSec
+        </a>
+      </div>
+
+      <div class="hero__cta" id="hero-cta">
+        <a href="#projects" class="btn btn--primary" id="cta-projects">
+          <span>View Projects</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="https://github.com/adilsr-sec" target="_blank" rel="noopener" class="btn btn--secondary" id="cta-github">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-label="Scroll down">
+      <div class="scroll-indicator" id="scroll-indicator">
+        <div class="scroll-indicator__wheel"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════ ABOUT -->
+  <section class="section about" id="about" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">Who I Am</span>
+        <h2 class="section__title" id="about-heading">About Me</h2>
+      </div>
+
+      <div class="about__grid">
+        <div class="about__text" id="about-text">
+          <p>
+            I am a <strong>Cybersecurity Engineering graduate</strong> with a
+            comprehensive academic foundation spanning ethical hacking,
+            cryptography, steganography, digital forensics, and network
+            security systems.
+          </p>
+          <p>
+            My capstone projects — a <strong>Blockchain Voting System</strong>
+            and the <strong>ARSS Audio Steganography engine (Arjuna's Astra)</strong> —
+            demonstrate my ability to apply theoretical security concepts to
+            real engineering challenges.
+          </p>
+          <p>
+            I actively train on <strong>TryHackMe</strong>, <strong>HackTheBox</strong>,
+            and <strong>OffSec</strong> platforms to stay current with
+            real-world attack and defense techniques.
+          </p>
+
+          <div class="about__targets" id="about-targets">
+            <h3 class="about__targets-title">Target Roles</h3>
+            <div class="role-tags" role="list">
+              <span class="role-tag" role="listitem">SOC Analyst</span>
+              <span class="role-tag" role="listitem">Digital Forensics Analyst</span>
+              <span class="role-tag" role="listitem">Incident Response Analyst</span>
+              <span class="role-tag" role="listitem">Threat Intelligence Analyst</span>
+              <span class="role-tag" role="listitem">SIEM Analyst</span>
+              <span class="role-tag" role="listitem">Vulnerability Assessment Analyst</span>
+              <span class="role-tag" role="listitem">Blue Team Analyst</span>
+              <span class="role-tag" role="listitem">Malware Analysis Intern</span>
+              <span class="role-tag" role="listitem">Security Monitoring Analyst</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__stats" id="about-stats">
+          <div class="stat-card" id="stat-projects">
+            <div class="stat-card__number" data-target="6">0</div>
+            <div class="stat-card__label">Security Projects</div>
+          </div>
+          <div class="stat-card" id="stat-tools">
+            <div class="stat-card__number" data-target="10">0</div>
+            <div class="stat-card__label">Security Tools</div>
+          </div>
+          <div class="stat-card" id="stat-courses">
+            <div class="stat-card__number" data-target="12">0</div>
+            <div class="stat-card__label">Security Courses</div>
+          </div>
+          <div class="stat-card" id="stat-ctfs">
+            <div class="stat-card__number" data-target="15">0</div>
+            <div class="stat-card__label">Labs Completed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ SKILLS -->
+  <section class="section skills" id="skills" aria-labelledby="skills-heading">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">What I Know</span>
+        <h2 class="section__title" id="skills-heading">Technical Skills</h2>
+      </div>
+
+      <div class="skills__grid" id="skills-grid">
+
+        <article class="skill-card" id="skill-soc">
+          <div class="skill-card__icon" aria-hidden="true">📡</div>
+          <h3 class="skill-card__title">SOC & Monitoring</h3>
+          <ul class="skill-card__list" role="list">
+            <li>SIEM Concepts (Splunk, ELK)</li>
+            <li>Log Analysis & Correlation</li>
+            <li>Alert Triage & Escalation</li>
+            <li>Threat Detection Rules (SIGMA)</li>
+            <li>MITRE ATT&CK Framework</li>
+          </ul>
+        </article>
+
+        <article class="skill-card" id="skill-network">
+          <div class="skill-card__icon" aria-hidden="true">🌐</div>
+          <h3 class="skill-card__title">Network Security</h3>
+          <ul class="skill-card__list" role="list">
+            <li>Nmap — Port Scanning</li>
+            <li>Wireshark — Packet Analysis</li>
+            <li>Firewall Configuration</li>
+            <li>TCP/IP Protocol Stack</li>
+            <li>IDS/IPS (Snort)</li>
+          </ul>
+        </article>
+
+        <article class="skill-card" id="skill-forensics">
+          <div class="skill-card__icon" aria-hidden="true">🔬</div>
+          <h3 class="skill-card__title">Digital Forensics</h3>
+          <ul class="skill-card__list" role="list">
+            <li>FTK Imager — Disk Imaging</li>
+            <li>Autopsy — Artifact Recovery</li>
+            <li>Metadata Extraction</li>
+            <li>Chain of Custody</li>
+            <li>IR Lifecycle (NIST 800-61)</li>
+          </ul>
+        </article>
+
+        <article class="skill-card" id="skill-crypto">
+          <div class="skill-card__icon" aria-hidden="true">🔐</div>
+          <h3 class="skill-card__title">Cryptography & Stego</h3>
+          <ul class="skill-card__list" role="list">
+            <li>AES, DES, RSA, ECC</li>
+            <li>SHA-256, MD5 Hashing</li>
+            <li>LSB Steganography (ARSS)</li>
+            <li>Digital Watermarking</li>
+            <li>Blockchain / Merkle Trees</li>
+          </ul>
+        </article>
+
+        <article class="skill-card" id="skill-pentest">
+          <div class="skill-card__icon" aria-hidden="true">⚔️</div>
+          <h3 class="skill-card__title">Ethical Hacking</h3>
+          <ul class="skill-card__list" role="list">
+            <li>Burp Suite — Web Testing</li>
+            <li>Recon-ng — Reconnaissance</li>
+            <li>OWASP Top 10</li>
+            <li>SQLi, XSS, CSRF</li>
+            <li>Vulnerability Assessment</li>
+          </ul>
+        </article>
+
+        <article class="skill-card" id="skill-programming">
+          <div class="skill-card__icon" aria-hidden="true">💻</div>
+          <h3 class="skill-card__title">Programming</h3>
+          <ul class="skill-card__list" role="list">
+            <li>Python 3 — Security Tooling</li>
+            <li>Bash / Shell Scripting</li>
+            <li>C Programming</li>
+            <li>Java (Security Labs)</li>
+            <li>SQL & DBMS</li>
+          </ul>
+        </article>
+
+      </div>
+
+      <!-- Tools Strip -->
+      <div class="tools-strip" id="tools-strip" aria-label="Security tools">
+        <h3 class="tools-strip__title">Tools I've Worked With</h3>
+        <div class="tools-strip__scroll">
+          <div class="tools-strip__track" id="tools-track">
+            <span class="tool-pill" id="tool-nmap">Nmap</span>
+            <span class="tool-pill" id="tool-wireshark">Wireshark</span>
+            <span class="tool-pill" id="tool-burp">Burp Suite</span>
+            <span class="tool-pill" id="tool-recon">Recon-ng</span>
+            <span class="tool-pill" id="tool-ftk">FTK Imager</span>
+            <span class="tool-pill" id="tool-autopsy">Autopsy</span>
+            <span class="tool-pill" id="tool-snort">Snort</span>
+            <span class="tool-pill" id="tool-kali">Kali Linux</span>
+            <span class="tool-pill" id="tool-metasploit">Metasploit</span>
+            <span class="tool-pill" id="tool-hashcat">Hashcat</span>
+            <span class="tool-pill" id="tool-john">John the Ripper</span>
+            <span class="tool-pill" id="tool-volatility">Volatility</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ PROJECTS -->
+  <section class="section projects" id="projects" aria-labelledby="projects-heading">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">What I've Built</span>
+        <h2 class="section__title" id="projects-heading">Featured Projects</h2>
+      </div>
+
+      <div class="projects__filter" id="projects-filter" role="group" aria-label="Project filters">
+        <button class="filter-btn filter-btn--active" data-filter="all" id="filter-all">All</button>
+        <button class="filter-btn" data-filter="academic" id="filter-academic">Academic</button>
+        <button class="filter-btn" data-filter="soc" id="filter-soc">SOC Tools</button>
+        <button class="filter-btn" data-filter="forensics" id="filter-forensics">Forensics</button>
+        <button class="filter-btn" data-filter="intel" id="filter-intel">Threat Intel</button>
+      </div>
+
+      <div class="projects__grid" id="projects-grid">
+
+        <!-- Project 1: Blockchain -->
+        <article class="project-card" data-category="academic" id="project-blockchain">
+          <div class="project-card__header">
+            <span class="project-card__icon" aria-hidden="true">🗳️</span>
+            <div class="project-card__badges">
+              <span class="badge badge--academic">Academic</span>
+              <span class="badge badge--complete">Complete</span>
+            </div>
+          </div>
+          <h3 class="project-card__title">Secured Voting Machine</h3>
+          <p class="project-card__subtitle">Blockchain Technology</p>
+          <p class="project-card__desc">
+            Decentralized voting system with SHA-256 hash chaining, Proof-of-Work
+            consensus, and voter anonymization. Prevents double-voting and
+            retroactive record tampering.
+          </p>
+          <div class="project-card__tags" aria-label="Technologies">
+            <span class="tag">Python</span>
+            <span class="tag">SHA-256</span>
+            <span class="tag">Blockchain</span>
+            <span class="tag">PoW</span>
+          </div>
+          <div class="project-card__footer">
+            <a href="../projects/secured-voting-blockchain/README.md"
+               class="project-link" id="link-blockchain">
+              View Details →
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 2: ARSS -->
+        <article class="project-card" data-category="academic" id="project-arss">
+          <div class="project-card__header">
+            <span class="project-card__icon" aria-hidden="true">🔊</span>
+            <div class="project-card__badges">
+              <span class="badge badge--academic">Academic</span>
+              <span class="badge badge--complete">Complete</span>
+            </div>
+          </div>
+          <h3 class="project-card__title">Arjuna's Astra</h3>
+          <p class="project-card__subtitle">ARSS Audio Steganography</p>
+          <p class="project-card__desc">
+            Custom steganography engine embedding audio payloads into images via
+            LSB substitution. PSNR &gt;40 dB ensures imperceptibility; SHA-256
+            checksum provides payload integrity verification.
+          </p>
+          <div class="project-card__tags" aria-label="Technologies">
+            <span class="tag">Python</span>
+            <span class="tag">LSB</span>
+            <span class="tag">SHA-256</span>
+            <span class="tag">PSNR</span>
+          </div>
+          <div class="project-card__footer">
+            <a href="../projects/audio-steganography-arss/README.md"
+               class="project-link" id="link-arss">
+              View Details →
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 3: SOC Monitor -->
+        <article class="project-card" data-category="soc" id="project-soc">
+          <div class="project-card__header">
+            <span class="project-card__icon" aria-hidden="true">📡</span>
+            <div class="project-card__badges">
+              <span class="badge badge--soc">SOC Tool</span>
+              <span class="badge badge--complete">Complete</span>
+            </div>
+          </div>
+          <h3 class="project-card__title">SOC Threat Monitor</h3>
+          <p class="project-card__subtitle">Detection & Alert Engine</p>
+          <p class="project-card__desc">
+            Log correlation engine with SIGMA-inspired rules detecting brute-force,
+            password spray, port scan, and privilege escalation. All alerts mapped
+            to MITRE ATT&amp;CK with remediation steps.
+          </p>
+          <div class="project-card__tags" aria-label="Technologies">
+            <span class="tag">Python</span>
+            <span class="tag">SIGMA</span>
+            <span class="tag">MITRE</span>
+            <span class="tag">SIEM</span>
+          </div>
+          <div class="project-card__footer">
+            <a href="../projects/soc-threat-monitor/README.md"
+               class="project-link" id="link-soc">
+              View Details →
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 4: Threat Intel -->
+        <article class="project-card" data-category="intel" id="project-ti">
+          <div class="project-card__header">
+            <span class="project-card__icon" aria-hidden="true">🕵️</span>
+            <div class="project-card__badges">
+              <span class="badge badge--intel">Threat Intel</span>
+              <span class="badge badge--complete">Complete</span>
+            </div>
+          </div>
+          <h3 class="project-card__title">Threat Intel Aggregator</h3>
+          <p class="project-card__subtitle">IOC Checker & Feed Analyzer</p>
+          <p class="project-card__desc">
+            Checks IP addresses, domains, and file hashes against simulated threat
+            feeds (AbuseIPDB, OTX, VirusTotal style). Produces MITRE ATT&amp;CK
+            enriched reports with confidence scores.
+          </p>
+          <div class="project-card__tags" aria-label="Technologies">
+            <span class="tag">Python</span>
+            <span class="tag">IOC</span>
+            <span class="tag">MITRE</span>
+            <span class="tag">OSINT</span>
+          </div>
+          <div class="project-card__footer">
+            <a href="../projects/threat-intel-aggregator/README.md"
+               class="project-link" id="link-ti">
+              View Details →
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 5: Network Scanner -->
+        <article class="project-card" data-category="soc" id="project-scanner">
+          <div class="project-card__header">
+            <span class="project-card__icon" aria-hidden="true">🔍</span>
+            <div class="project-card__badges">
+              <span class="badge badge--soc">Network</span>
+              <span class="badge badge--complete">Complete</span>
+            </div>
+          </div>
+          <h3 class="project-card__title">Network Port Scanner</h3>
+          <p class="project-card__subtitle">Multi-threaded Reconnaissance</p>
+          <p class="project-card__desc">
+            Multi-threaded TCP scanner with banner grabbing and service detection.
+            Written in pure Python with configurable timeout, thread count, and
+            port ranges. Authorized use only.
+          </p>
+          <div class="project-card__tags" aria-label="Technologies">
+            <span class="tag">Python</span>
+            <span class="tag">Sockets</span>
+            <span class="tag">Threading</span>
+            <span class="tag">Recon</span>
+          </div>
+          <div class="project-card__footer">
+            <a href="../projects/network_scanner/README.md"
+               class="project-link" id="link-scanner">
+              View Details →
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 6: Log Analyzer -->
+        <article class="project-card" data-category="forensics" id="project-log">
+          <div class="project-card__header">
+            <span class="project-card__icon" aria-hidden="true">🛡️</span>
+            <div class="project-card__badges">
+              <span class="badge badge--forensics">Forensics</span>
+              <span class="badge badge--complete">Complete</span>
+            </div>
+          </div>
+          <h3 class="project-card__title">Auth Log Analyzer</h3>
+          <p class="project-card__subtitle">SSH Brute Force Detector</p>
+          <p class="project-card__desc">
+            Authentication log parser that detects SSH brute-force attacks,
+            suspicious login patterns, and generates analyst reports with
+            attacker IP profiling and timeline reconstruction.
+          </p>
+          <div class="project-card__tags" aria-label="Technologies">
+            <span class="tag">Python</span>
+            <span class="tag">Regex</span>
+            <span class="tag">Log Analysis</span>
+            <span class="tag">IR</span>
+          </div>
+          <div class="project-card__footer">
+            <a href="../projects/auth_log_analyzer/README.md"
+               class="project-link" id="link-log">
+              View Details →
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ CERTIFICATIONS -->
+  <section class="section certifications" id="certifications" aria-labelledby="certs-heading">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">Learning Journey</span>
+        <h2 class="section__title" id="certs-heading">Certifications & Training</h2>
+      </div>
+
+      <div class="cert-timeline" id="cert-timeline" role="list">
+
+        <div class="cert-item cert-item--active" id="cert-thm" role="listitem">
+          <div class="cert-item__dot" aria-hidden="true"></div>
+          <div class="cert-item__content">
+            <span class="cert-item__status cert-item__status--progress">In Progress</span>
+            <h3 class="cert-item__title">TryHackMe — SOC Level 1 Path</h3>
+            <p class="cert-item__desc">Phishing analysis, SIEM usage, threat hunting, endpoint investigation</p>
+          </div>
+        </div>
+
+        <div class="cert-item cert-item--active" id="cert-htb" role="listitem">
+          <div class="cert-item__dot" aria-hidden="true"></div>
+          <div class="cert-item__content">
+            <span class="cert-item__status cert-item__status--progress">In Progress</span>
+            <h3 class="cert-item__title">HackTheBox — Starting Point</h3>
+            <p class="cert-item__desc">Practical lab machines, active directory basics, privilege escalation</p>
+          </div>
+        </div>
+
+        <div class="cert-item" id="cert-secplus" role="listitem">
+          <div class="cert-item__dot" aria-hidden="true"></div>
+          <div class="cert-item__content">
+            <span class="cert-item__status cert-item__status--target">Targeting</span>
+            <h3 class="cert-item__title">CompTIA Security+</h3>
+            <p class="cert-item__desc">Core security concepts, network security, compliance, risk management</p>
+          </div>
+        </div>
+
+        <div class="cert-item" id="cert-google" role="listitem">
+          <div class="cert-item__dot" aria-hidden="true"></div>
+          <div class="cert-item__content">
+            <span class="cert-item__status cert-item__status--target">Targeting</span>
+            <h3 class="cert-item__title">Google Cybersecurity Certificate</h3>
+            <p class="cert-item__desc">Security foundations, SIEM, incident response, Python automation</p>
+          </div>
+        </div>
+
+        <div class="cert-item" id="cert-cysa" role="listitem">
+          <div class="cert-item__dot" aria-hidden="true"></div>
+          <div class="cert-item__content">
+            <span class="cert-item__status cert-item__status--future">Planned</span>
+            <h3 class="cert-item__title">CompTIA CySA+</h3>
+            <p class="cert-item__desc">Threat hunting, behavioral analytics, advanced incident response</p>
+          </div>
+        </div>
+
+        <div class="cert-item" id="cert-oscp" role="listitem">
+          <div class="cert-item__dot" aria-hidden="true"></div>
+          <div class="cert-item__content">
+            <span class="cert-item__status cert-item__status--future">Long-Term Goal</span>
+            <h3 class="cert-item__title">OSCP — OffSec Certified Professional</h3>
+            <p class="cert-item__desc">Advanced penetration testing, report writing, real-world exploits</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ CONTACT -->
+  <section class="section contact" id="contact" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">Get In Touch</span>
+        <h2 class="section__title" id="contact-heading">Contact Me</h2>
+        <p class="section__subtitle">
+          Open to SOC Analyst, Forensics, and Security Monitoring roles.
+          Let's connect!
+        </p>
+      </div>
+
+      <div class="contact__grid" id="contact-grid">
+
+        <a href="mailto:adilsr33@gmail.com"
+           class="contact-card" id="contact-email">
+          <div class="contact-card__icon" aria-hidden="true">📧</div>
+          <div class="contact-card__content">
+            <h3 class="contact-card__title">Email</h3>
+            <p class="contact-card__value">adilsr33@gmail.com</p>
+          </div>
+        </a>
+
+        <a href="https://linkedin.com/in/adilsr33"
+           target="_blank" rel="noopener"
+           class="contact-card" id="contact-linkedin">
+          <div class="contact-card__icon" aria-hidden="true">💼</div>
+          <div class="contact-card__content">
+            <h3 class="contact-card__title">LinkedIn</h3>
+            <p class="contact-card__value">linkedin.com/in/adilsr33</p>
+          </div>
+        </a>
+
+        <a href="https://github.com/adilsr-sec"
+           target="_blank" rel="noopener"
+           class="contact-card" id="contact-github">
+          <div class="contact-card__icon" aria-hidden="true">🐙</div>
+          <div class="contact-card__content">
+            <h3 class="contact-card__title">GitHub</h3>
+            <p class="contact-card__value">github.com/adilsr-sec</p>
+          </div>
+        </a>
+
+        <a href="https://tryhackme.com/p/adilsr-sec"
+           target="_blank" rel="noopener"
+           class="contact-card" id="contact-thm">
+          <div class="contact-card__icon" aria-hidden="true">🎯</div>
+          <div class="contact-card__content">
+            <h3 class="contact-card__title">TryHackMe</h3>
+            <p class="contact-card__value">tryhackme.com/p/adilsr-sec</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ FOOTER -->
+  <footer class="footer" id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__inner">
+        <p class="footer__copy">
+          © 2026 Adil S R — Cybersecurity Portfolio
+        </p>
+        <p class="footer__disclaimer">
+          ⚠️ All tools are for authorized and educational use only.
+        </p>
+        <p class="footer__made">
+          Built with 🛡️ and passion for cybersecurity
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

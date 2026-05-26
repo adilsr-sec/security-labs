@@ -1,83 +1,191 @@
-# Audio in Image Steganography Using ARSS Algorithm (Arjuna's Astra)
+# 🔊 Audio-in-Image Steganography — Arjuna's Astra (ARSS Algorithm)
 
-An academic research project implementing a secure data-hiding utility that embeds audio payload files inside cover image containers using the **Adaptive Randomized Spatial Substitution (ARSS) Algorithm (codename: Arjuna's Astra)**.
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python)](https://python.org)
+[![Tests](https://img.shields.io/badge/Tests-Passing-success?style=flat-square)](test_arss.py)
+[![Domain](https://img.shields.io/badge/Domain-Steganography_•_Cryptography_•_Signal_Processing-blueviolet?style=flat-square)]()
 
----
-
-## 🎯 Project Objective
-
-Steganography is the practice of concealing a file, message, image, or video within another file. The main objective of this project was to:
-1. Hide high-fidelity audio signals (WAV format) inside digital images (PNG format).
-2. Avoid visual artifacts or distortion that could tip off human observers or automated steganalysis engines.
-3. Design a custom selection method (**ARSS / Arjuna's Astra**) that increases encryption key-space complexity and secures the data payload.
+> **Academic Capstone Project** — Steganography & Digital Watermarking
 
 ---
 
-## 🧬 The ARSS Algorithm (Arjuna's Astra)
+## 📌 Project Overview
 
-Traditional Least Significant Bit (LSB) steganography replaces sequential bit arrays, making it highly vulnerable to **Chi-Square Statistical Steganalysis**. 
+**Arjuna's Astra** (ARSS — Arjuna's Astra Robust Steganography Scheme) is a custom steganographic algorithm designed to **embed audio waveform data invisibly inside digital images**.
 
-**Arjuna's Astra** mitigates this through two primary components:
+The technique exploits the **human visual system's limited sensitivity to minor luminance changes**: by replacing the 1–4 Least-Significant Bits (LSBs) of each RGB pixel channel with encoded audio amplitude samples, we hide a covert audio payload in plain sight. The cover image appears visually identical to the human eye, but the embedded data can be extracted by anyone with knowledge of the ARSS scheme.
 
-```text
-       +--------------------+
-       |  WAV Audio Payload |
-       +---------+----------+
-                 | (Compress & Encrypt)
-                 v
-       +--------------------+
-       | Bitstream Packet   |
-       +---------+----------+
-                 |
-                 v     +--------------------+
-                 +---->| ARSS Selector      |<---+ Secret Key Seed
-                       +---------+----------+
-                                 | (Adaptive Spatial Embedding)
-                                 v
-                       +--------------------+
-                       | Cover Image (PNG)  |
-                       +---------+----------+
-                                 |
-                                 v
-                       +--------------------+
-                       | Stego-Image File   |
-                       +--------------------+
+**Real-world relevance:** Steganography is used in:
+- Digital watermarking for intellectual property protection.
+- Covert communication in adversarial environments.
+- Steganalysis (detecting hidden content) — a key skill for cyber forensics analysts.
+
+---
+
+## 🧠 Algorithm Design — ARSS
+
+### Encoding Pipeline
+
+```
+INPUT: Cover Image (RGB PNG) + Audio Samples (16-bit PCM)
+           │
+           ▼
+  ┌─────────────────────────────────────┐
+  │  1. SERIALIZE audio samples         │
+  │     16-bit big-endian integers      │
+  └─────────────────────────────────────┘
+           │
+           ▼
+  ┌─────────────────────────────────────┐
+  │  2. BUILD ARSS HEADER (40 bytes)    │
+  │     [ARSS magic: 4B]                │
+  │     [payload length: 4B uint32]     │
+  │     [SHA-256 checksum: 32B]         │
+  └─────────────────────────────────────┘
+           │
+           ▼
+  ┌─────────────────────────────────────┐
+  │  3. CONVERT to bit stream           │
+  │     Header bits + Payload bits      │
+  └─────────────────────────────────────┘
+           │
+           ▼
+  ┌─────────────────────────────────────┐
+  │  4. LSB EMBED into pixel channels   │
+  │     Replace N LSBs per R/G/B value  │
+  │     Row-major order traversal       │
+  └─────────────────────────────────────┘
+           │
+           ▼
+OUTPUT: Stego-Image (PNG, lossless format preserves LSBs)
 ```
 
-### 1. Adaptive Bit-Depth Embedding
-Instead of hiding a fixed number of bits per pixel, the algorithm measures **local pixel variance** (neighborhood texture). 
-* **High-texture regions** (busy patterns, edges) can tolerate higher bit-depth changes (up to 3 bits/pixel) without human detection.
-* **Low-texture regions** (flat gradients, skies) are restricted to 0 or 1 bit/pixel.
+### Decoding Pipeline
 
-### 2. Randomized Spatial Distribution
-* The algorithm uses a Cryptographically Secure Pseudo-Random Number Generator (CSPRNG) seeded with a **shared secret key**.
-* This seed determines the traversal order of coordinates across the cover image. 
-* Without the secret key, an attacker cannot identify which pixels contain payload bits, even if they suspect steganography is being used.
+```
+INPUT: Stego-Image (PNG)
+           │
+           ▼
+  ┌─────────────────────────────────────┐
+  │  1. EXTRACT LSBs from pixel values  │
+  └─────────────────────────────────────┘
+           │
+           ▼
+  ┌─────────────────────────────────────┐
+  │  2. PARSE HEADER                    │
+  │     • Verify ARSS magic bytes       │
+  │     • Read payload length           │
+  │     • Read expected SHA-256 hash    │
+  └─────────────────────────────────────┘
+           │
+           ▼
+  ┌─────────────────────────────────────┐
+  │  3. EXTRACT payload bits            │
+  │     Reconstruct 16-bit samples      │
+  └─────────────────────────────────────┘
+           │
+           ▼
+  ┌─────────────────────────────────────┐
+  │  4. VERIFY SHA-256 checksum         │
+  │     Detect tampering or corruption  │
+  └─────────────────────────────────────┘
+           │
+           ▼
+OUTPUT: Decoded Audio Samples + Verification Status
+```
 
 ---
 
-## 🔄 Lifecycle Workflow
+## 🔐 Security Properties
 
-### Embedding Phase
-1. **Payload Pre-processing:** The input `.wav` audio file is compressed (removing headers where possible) and encrypted using a lightweight symmetric cipher.
-2. **Texture Analysis:** The cover image `.png` is analyzed block-by-block to map texture thresholds.
-3. **CSPRNG Seeding:** The secret key seeds the coordinate picker.
-4. **Adaptive Substitution:** Bits are packed into selected pixel color channels according to local threshold capacities.
-5. **Output Generation:** The output `.png` (stego-image) is saved losslessly.
-
-### Extraction Phase
-1. **Coordinate Retrieval:** The recipient inputs the same secret key, reproducing the exact randomized coordinate map.
-2. **Bit Extraction:** Read color channel LSB structures matching the texture map.
-3. **Reassembly:** Decrypt and decompress the bitstream to reconstruct the original functional `.wav` audio.
+| Property | Mechanism | Benefit |
+|:---|:---|:---|
+| **Payload Integrity** | SHA-256 checksum in header | Detects any post-encoding tampering |
+| **Magic Byte Marker** | `ARSS` 4-byte prefix | Confirms ARSS-encoded images; rejects others |
+| **Imperceptibility** | LSB-only modification | PSNR > 40 dB — changes invisible to humans |
+| **Configurable Depth** | 1–4 bits per channel | Balance between capacity and visual quality |
+| **Lossless Output** | PNG format mandatory | JPEG compression destroys LSBs |
 
 ---
 
-## 📈 Security Evaluation Metrics
+## 📊 Capacity Analysis
 
-To prove the efficacy of the Arjuna's Astra algorithm, the outputs were tested against standard benchmarks:
+For an image of *W × H* pixels (RGB = 3 channels) using *n* bits per channel:
 
-* **Peak Signal-to-Noise Ratio (PSNR):** Measures logarithmic ratio between the maximum possible power of a signal and the corrupting noise.
-  - *Result:* **> 45 dB** (Values above 30 dB are considered imperceptible to the human eye).
-* **Structural Similarity Index (SSIM):** Evaluates luminance, contrast, and structure similarity.
-  - *Result:* **0.998** (Where 1.0 represents a perfect identical image match).
-* **Statistical Resistance:** Tested against Chi-Square analysis. The randomized coordinate distribution prevents the expected clustering of bit patterns, resisting standard detection scans.
+```
+Capacity (bits) = W × H × 3 × n
+Capacity (bytes) = W × H × 3 × n ÷ 8
+
+Example — 512×512 image, 2 bits/channel:
+  = 512 × 512 × 3 × 2 ÷ 8
+  = 196,608 bytes ≈ 192 KB of audio payload
+```
+
+At 44,100 Hz, 16-bit mono audio: ~2.2 seconds of audio per MB.
+A 512×512 image can hold ~0.4 seconds of uncompressed audio.
+Larger or higher-resolution images increase capacity proportionally.
+
+---
+
+## 📂 File Structure
+
+```
+audio-steganography-arss/
+├── arss_steg.py       # Core ARSS encode/decode engine (no external deps)
+├── test_arss.py       # 20+ pytest unit tests
+└── README.md          # This file
+```
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# Run all unit tests
+pytest test_arss.py -v
+
+# Use the library in Python
+python3 - << 'EOF'
+from arss_steg import encode_audio_in_image, decode_audio_from_image
+
+# Synthetic "image" — in real use, load with Pillow and flatten pixels
+cover_pixels = [(i * 37 + 128) % 256 for i in range(10000)]
+
+# Synthetic "audio" — in real use, read a WAV file
+audio_samples = [1000, 2000, 32000, 50000, 4096, 60000]
+
+# Encode
+result = encode_audio_in_image(cover_pixels, audio_samples)
+print(f"PSNR: {result['psnr_db']} dB")
+print(f"Utilization: {result['utilization_pct']}%")
+print(f"Checksum: {result['checksum'][:32]}...")
+
+# Decode
+decoded = decode_audio_from_image(result['stego_pixels'])
+print(f"Recovered {decoded['num_samples']} samples: {decoded['audio_samples']}")
+print(f"Integrity verified: {decoded['checksum_verified']}")
+EOF
+```
+
+---
+
+## 🔬 Steganalysis Awareness
+
+As a cybersecurity student, understanding *how to detect* steganography is equally important:
+
+| Detection Method | What it finds |
+|:---|:---|
+| **Chi-square analysis** | Statistical anomalies in LSB distribution |
+| **RS Analysis** | Detects regular/singular group patterns from LSB flipping |
+| **Histogram comparison** | Luminance histogram differences between cover and stego |
+| **File size anomalies** | Hidden data inflating file sizes unexpectedly |
+
+The ARSS algorithm incorporates randomized bit distribution strategies (in a full implementation) to resist basic steganalysis, though advanced ML-based detectors remain a challenge.
+
+---
+
+## 📚 Academic References
+
+- Johnson, N.F., & Jajodia, S. (1998). *Exploring Steganography: Seeing the Unseen.* IEEE Computer.
+- Westfeld, A. (2001). *F5—A Steganographic Algorithm.* Lecture Notes in Computer Science.
+- Fridrich, J. (2010). *Steganography in Digital Media: Principles, Algorithms and Applications.*
+- NIST FIPS 180-4: Secure Hash Standard — SHA-256 specification.

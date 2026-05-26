@@ -1,0 +1,52 @@
+{
+  "brute_force_threshold": 5,
+  "spray_threshold": 3,
+  "refused_scan_threshold": 8,
+  "rules": [
+    {
+      "id": "SSH_BRUTE_FORCE",
+      "name": "SSH Brute Force Attack",
+      "severity": "HIGH",
+      "description": "More than N failed SSH logins from a single source IP",
+      "mitre_tactic": "Credential Access",
+      "mitre_technique": "T1110.001",
+      "condition": "failed_logins_per_ip >= brute_force_threshold"
+    },
+    {
+      "id": "PASSWORD_SPRAY",
+      "name": "Password Spray Attack",
+      "severity": "HIGH",
+      "description": "Failed logins targeting many unique users from one IP",
+      "mitre_tactic": "Credential Access",
+      "mitre_technique": "T1110.003",
+      "condition": "unique_users_per_ip >= spray_threshold"
+    },
+    {
+      "id": "SUCCESSFUL_POST_BRUTE",
+      "name": "Account Compromise Indicator",
+      "severity": "CRITICAL",
+      "description": "Successful login from IP that previously failed many times",
+      "mitre_tactic": "Initial Access",
+      "mitre_technique": "T1078",
+      "condition": "successful_login AND source_ip IN brute_force_ips"
+    },
+    {
+      "id": "PORT_SCAN",
+      "name": "Port Scan Detection",
+      "severity": "MEDIUM",
+      "description": "Multiple refused connections from single source",
+      "mitre_tactic": "Discovery",
+      "mitre_technique": "T1046",
+      "condition": "refused_connections_per_ip >= refused_scan_threshold"
+    },
+    {
+      "id": "PRIVILEGE_ESCALATION",
+      "name": "Excessive Sudo Activity",
+      "severity": "MEDIUM",
+      "description": "Unusual volume of privileged command executions",
+      "mitre_tactic": "Privilege Escalation",
+      "mitre_technique": "T1548",
+      "condition": "sudo_events_per_user >= 3"
+    }
+  ]
+}

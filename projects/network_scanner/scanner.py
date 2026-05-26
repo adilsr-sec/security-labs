@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Multi-Threaded Network Port Scanner
-Author: entry-level cybersecurity engineer
+Author: Adil S R
 Description: A security-oriented TCP port scanner that resolves hostnames,
              validates inputs, uses multi-threading, and grabs banners.
 """
