@@ -149,6 +149,7 @@ img { max-width: 100%; height: auto; }
   display: flex;
   align-items: center;
   gap: var(--space-md);
+  margin-left: auto;
 }
 
 .nav__link {
