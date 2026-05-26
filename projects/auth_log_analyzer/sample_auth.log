@@ -1,0 +1,16 @@
+May 26 10:01:05 server sshd[12345]: Accepted publickey for admin from 192.168.1.20 port 49232 ssh2: RSA SHA256:abc123xyz...
+May 26 10:01:10 server sshd[12345]: pam_unix(sshd:session): session opened for user admin(0) by (uid=0)
+May 26 10:02:15 server sshd[12350]: Failed password for root from 192.168.1.100 port 50201 ssh2
+May 26 10:02:16 server sshd[12352]: Failed password for root from 192.168.1.100 port 50202 ssh2
+May 26 10:02:18 server sshd[12354]: Failed password for root from 192.168.1.100 port 50204 ssh2
+May 26 10:02:20 server sshd[12356]: Failed password for admin from 192.168.1.100 port 50206 ssh2
+May 26 10:02:22 server sshd[12358]: Failed password for user1 from 192.168.1.100 port 50208 ssh2
+May 26 10:02:25 server sshd[12360]: Failed password for test from 192.168.1.100 port 50210 ssh2
+May 26 10:03:00 server sshd[12362]: Invalid user support from 10.0.0.50 port 38221 ssh2
+May 26 10:03:01 server sshd[12362]: Failed password for invalid user support from 10.0.0.50 port 38221 ssh2
+May 26 10:03:10 server sshd[12365]: Invalid user ubnt from 10.0.0.50 port 38222 ssh2
+May 26 10:03:12 server sshd[12365]: Failed password for invalid user ubnt from 10.0.0.50 port 38222 ssh2
+May 26 10:04:10 server sshd[12345]: pam_unix(sshd:session): session closed for user admin
+May 26 10:05:40 server sshd[12380]: Failed password for root from 192.168.1.105 port 55100 ssh2
+May 26 10:06:01 server sshd[12382]: Accepted password for deployer from 192.168.1.15 port 41201 ssh2
+May 26 10:06:05 server sshd[12382]: pam_unix(sshd:session): session opened for user deployer by (uid=0)
